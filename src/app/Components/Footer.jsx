@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <div className='flex flex-col md:flex-row items-center justify-between px-[1%] md:px-[5%] 2xl:px-[7%] bg-gradient-to-r from-[#F4E8F3] to-[#EEE0F9] py-5'>
             <Link href="/" className="flex items-center gap-1">
-                <img src="/logo1.png" alt='logo' className='w-12'/>
+                <img src="/logo/logo1.png" alt='logo' className='w-12'/>
                 <h2 className='text-2xl font-semibold'>SALFORD</h2>
             </Link>
             <div>

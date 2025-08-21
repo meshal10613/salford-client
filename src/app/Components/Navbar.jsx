@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react'
+import { signIn } from "next-auth/react"
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -40,7 +41,7 @@ export default function Navbar() {
                 </ul>
             </div>
             <Link href="/" className="flex items-center gap-1">
-                <img src="/logo1.png" alt='logo' className='w-12'/>
+                <img src="/logo/logo1.png" alt='logo' className='w-12'/>
                 <h2 className='text-2xl font-semibold'>SALFORD</h2>
             </Link>
         </div>
@@ -62,7 +63,7 @@ export default function Navbar() {
             </ul>
         </div>
         <div className="navbar-end">
-            <Link href="/login" className='btn rounded-3xl bg-[#3A4980] text-white'>Login</Link>
+            <button onClick={() => signIn()} className='btn rounded-3xl bg-[#3A4980] text-white'>Login</button>
         </div>
     </div>
     )
