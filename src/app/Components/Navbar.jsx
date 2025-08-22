@@ -4,10 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react'
-import { signIn } from "next-auth/react"
+import { signIn, signOut, useSession } from "next-auth/react"
 
 export default function Navbar() {
     const pathname = usePathname();
+    const { data: session, status } = useSession();
+
+    if (status === "loading") {
+        return <p>Loading...</p>; // optional
+    }
 
     const links = [
         { name: "Home", href: "/" },
@@ -63,7 +68,16 @@ export default function Navbar() {
             </ul>
         </div>
         <div className="navbar-end">
-            <button onClick={() => signIn()} className='btn rounded-3xl bg-[#3A4980] text-white'>Login</button>
+            {
+                session?
+                <div>
+                    <button onClick={() => signOut()} className='btn rounded-3xl bg-[#3A4980] text-white'>Signout</button>
+                </div> :
+                <div>
+                    <button onClick={() => signIn()} className='btn rounded-3xl bg-[#3A4980] text-white'>Login</button>
+                    <Link href="/register" className='btn rounded-3xl bg-[#3A4980] text-white'>Register</Link>
+                </div>
+            }
         </div>
     </div>
     )
