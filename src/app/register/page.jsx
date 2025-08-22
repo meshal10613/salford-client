@@ -15,7 +15,7 @@ export default function RegisterForm() {
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(allData)
+            body: JSON.stringify(payload)
         })
         .then(res => res.json())
         .then(data => {
