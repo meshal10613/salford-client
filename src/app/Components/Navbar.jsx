@@ -71,7 +71,7 @@ export default function Navbar() {
             {
                 session?
                 <div>
-                    <button onClick={() => signOut()} className='btn rounded-3xl bg-[#3A4980] text-white'>Signout</button>
+                    <button onClick={() => signOut({ callbackUrl: "/" })} className='btn rounded-3xl bg-[#3A4980] text-white'>Signout</button>
                 </div> :
                 <div>
                     <button onClick={() => signIn()} className='btn rounded-3xl bg-[#3A4980] text-white'>Login</button>
