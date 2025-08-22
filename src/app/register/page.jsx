@@ -10,7 +10,7 @@ export default function RegisterForm() {
         const email = form.email.value;
         const password = form.password.value;
         const payload = { username, email, password, role: "user" };
-        fetch("http://localhost:5000/users", {
+        fetch("https://salford-server.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
