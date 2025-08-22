@@ -3,7 +3,7 @@
 **SALFORD** is a Next.js application with authentication powered by **NextAuth.js**.  
 It includes **protected routes**, **login/logout functionality**, and an **Add Product form** to demonstrate secure data handling.
 
-🔗 **Live Demo:** [SALFORD Live](https://salford-demo.vercel.app)  
+🔗 **Live Demo:** [SALFORD Live](https://salford-client.netlify.app/)  
 *(Replace with your actual deployed link)*
 
 ---
@@ -39,8 +39,9 @@ Create a .env.local file in the root and add:
 
 ```bash
 
-NEXTAUTH_SECRET=your-secret-key
-NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=helloworld
+DB_NAME=salford
+MONGODB_URI=mongodb+srv://salford:F1aItr51aDoj5pNn@meshal10613.mbbtx0s.mongodb.net/?retryWrites=true&w=majority&appName=meshal10613
 ```
 
 ### 4. Run the development server
