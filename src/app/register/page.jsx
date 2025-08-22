@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 import Swal from "sweetalert2";
 
 export default function RegisterForm() {
@@ -18,12 +19,20 @@ export default function RegisterForm() {
             body: JSON.stringify(payload)
         })
         .then(res => res.json())
-        .then(data => {
+        .then(async(data) => {
             if(data.insertedId){
                 Swal.fire({
                     title: "Congratulations!",
                     text: "Register Successfully",
                     icon: "success"
+                });
+
+                // ✅ Immediately log the user in
+                await signIn("credentials", {
+                    redirect: true, // auto-redirect after login
+                    email,
+                    password,
+                    callbackUrl: "/", // where to redirect after login
                 });
             }else{
                 Swal.fire({
