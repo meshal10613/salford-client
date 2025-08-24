@@ -5,8 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react'
 import { signIn, signOut, useSession } from "next-auth/react"
+import ThemeToggle from './ThemeToggle';
+import { useTheme } from 'next-themes';
 
 export default function Navbar() {
+    const { theme, setTheme } = useTheme();
     const pathname = usePathname();
     const { data: session, status } = useSession();
 
@@ -37,7 +40,7 @@ export default function Navbar() {
                             className={`${
                                 pathname === link.href
                                 ? "text-[#EEE0F9] font-bold border-b-2 border-[#EEE0F9]"
-                                : "text-black hover:text-[#EEE0F9]"
+                                : `${theme === "light" ? "text-black" : "text-white"} hover:text-[#EEE0F9]`
                             } mb-3`}
                             >
                             {link.name}
@@ -59,8 +62,8 @@ export default function Navbar() {
                     className={`${
                         pathname === link.href
                         ? "font-bold border-b-2 border-[#EEE0F9]"
-                        : ""
-                    } mb-3`}
+                        : ``
+                    } mb-3 ${theme === "light" ? "text-black" : "text-white"}`}
                     >
                     {link.name}
                     </Link>
@@ -68,6 +71,7 @@ export default function Navbar() {
             </ul>
         </div>
         <div className="navbar-end">
+            <ThemeToggle/>
             {
                 session?
                 <div>

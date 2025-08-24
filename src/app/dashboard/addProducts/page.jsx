@@ -1,11 +1,13 @@
 "use client"
 
 import { useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import Swal from 'sweetalert2';
 
 export default function AddProducts() {
+    const { theme, setTheme } = useTheme();
     const { data: session, status } = useSession();
 
     const router = useRouter();
@@ -53,7 +55,7 @@ export default function AddProducts() {
     };
 
     return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-2xl ">
+    <div className={`max-w-md mx-auto p-6 shadow-lg rounded-2xl ${theme === "light" ? "bg-white" : "bg-black"}`}>
         <h2 className="text-2xl font-bold mb-6 text-center">Add New Product</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
             
