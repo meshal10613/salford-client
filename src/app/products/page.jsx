@@ -2,6 +2,14 @@ import React from 'react'
 import getAllProducts from '../../../lib/getAllProducts'
 import Link from 'next/link';
 
+export const metadata = {
+    title: "SALFORD | Products",
+    description: "Generated",
+    icons: {
+        icon: "/logo/logo1.png", // your logo or favicon path
+    },
+};
+
 export default async function Products() {
     const products = await getAllProducts();
     return (

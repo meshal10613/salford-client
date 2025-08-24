@@ -4,6 +4,16 @@ import getProduct from '../../../../lib/getProduct';
 // import { getServerSession } from 'next-auth';
 // import { redirect } from 'next/navigation';
 
+export async function generateMetadata({ params }) {
+    const {id} = params;
+    const product = await getProduct({id});
+    return {
+        title: product?.name,
+        description: product.description,
+    };
+};
+
+
 export default async function Product({params}) {
     const {id} = params;
     const product = await getProduct({id});
